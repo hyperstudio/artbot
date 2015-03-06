@@ -31,6 +31,8 @@ footerslidertype: venue-events-slider
                         <dd><%= venueObj.hours %></dd>
                         <% /* Originally each line of the hours had its own DD tag */ %>
                     </dl>
+                    <p>Price: <%= venueObj.price %></p>
+                    
                     <p class="item-website"><a href="<%= venueObj.url %>" target="_blank"><span class="item-symbol"><i class="icon icon-globe"></i></span><%= trimmedURL %></a></p>
                     <p><%= venueObj.description %></p>
                 </div>

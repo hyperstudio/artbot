@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>Events and Exhibitions by Location - Artbot</title>
+    <title>About Us - Artbot</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -64,131 +64,39 @@
     </script>
     
 </head>
-<body id="page--bylocation" class="page--bylocation ui-page-theme-a">
+<body id="page--about" class="page--about ui-page-theme-a">
 
     <div data-role="page" class="wrapper">
 
         <header class="masthead" role="banner" data-role="header" data-position="fixed" data-tap-toggle="false">
-    <h1><a href="/">By Location</a></h1>
+    <h1><a href="/">About Us</a></h1>
 
     <a href="#menu-panel" id="menu-trigger" class="ui-btn-right ui-btn-noborder ui-btn-nopadding ui-btn-icon-notext btn btn-round" title="Menu"><i class="icon icon-menu"></i><span class="visuallyhidden">Menu</span></a>
 </header> <!-- /header -->
 
-                <div class="content layout-footer" role="main">
+                <div class="content" role="main">
+            <p>Discover art in in and around Boston!</p>
 
-            <div id="event-map" class="map">
-            </div>
+			<p>Artbot encourages meaningful, sustained relationships to art through the discovery of local cultural happenings. We combine human and bot curators to find, organize, and connect events at different institutions around Boston, with the goal of helping you find new art tailored to your interests.</p>
 
-            <div id="event-list-messages" class="event-list-messages error-messages">
-                <p id="event-list-msg-noevents" class="event-list-msg">No exhibitions found for this venue.</p>
-                <p id="event-list-msg-generalerror" class="event-list-msg">An error occurred, please reload the page and try again.</p>
-            </div>
+			<p>Now in beta, Artbot currently shares information about events and exhibitions at the deCordova Museum, Harvard Art Museums, Institute of Contemporary Art, Isabella Stewart Gardner Museum, MIT List Visual Arts Center, Museum of Fine Arts, Peabody Essex Museum, and Rose Art Museum.</p>
 
-            <div id="event-list" class="thumb-list">
-            </div>
-            
-            <a href="#" id="load-more" class="btn btn-block btn-hidden" data-feed="/GetEventsByLocation/">Load more</a>
-            
-            <script type="text/template" id="template-eventlist">
-            <% _.each(eventArray, function(eventObj, key){ %>
+			<p>Artbot was developed at <a href="http://hyperstudio.mit.edu">HyperStudio</a>, the digital humanities laboratory at the Massachusetts Institute of Technology. Our goal is to inject fresh, unconventional, and playful connections between cultural events, to help audiences serendipitously discover new art.</p>
 
-            <% var eventStartDate = moment(eventObj.start_date).format("ddd, MMM Do YYYY"); // "Sun, Feb 14th 2010" %>
-            <% var eventStartTime = moment(eventObj.start_date).format("h:mm a"); // "10:15 am" %>
-
-            <% var eventEndDate = moment(eventObj.end_date).format("MMM Do, YYYY"); // "Feb 14th, 2010" %>
-            <% var eventEndTime = moment(eventObj.end_date).format("h:mm a"); // "10:15 am" %>
-
-            <% var compareStartDate = moment(eventObj.start_date).format("M/D/YYYY"); // "2/14/2010" %>
-            <% var compareEndDate = moment(eventObj.end_date).format("M/D/YYYY"); // "2/14/2010" %>
-                    
-            <div class="item-block cf">
-                <div class="item-image">
-                    <a href="event.html?eventid=<%= eventObj.id %>">
-                        <img src="<%= eventObj.image %>" alt="" onerror="if (this.src != '/ui/img/rect-thumb-noimage.jpg') this.src = '/ui/img/rect-thumb-noimage.jpg';" />
-                    </a>
-                </div>
-                <div class="item-info">
-                    <h2 class="item-title">
-                        <a href="event.html?eventid=<%= eventObj.id %>" class="truncate"><%= eventObj.name %></a>
-                    </h2>
-                    <p class="item-date">
-                    <% if (compareStartDate != compareEndDate) { %>
-                        Through <%= eventEndDate %>
-                    <% } else { %>
-                        <%= eventStartDate %><br />
-                        <%= eventStartTime %> - <%= eventEndTime %>
-                    <% } %>
-                    </p>
-
-                    <a href="#" class="favorite-star item-symbol" data-event-id="<%= eventObj.id %>" title="Toggle as a favorite"><i class="icon icon-star"></i><span class="visuallyhidden">Toggle as a favorite</span></a>
-                </div>
-            </div>
-
-            <% }); %>
-                
-            </script>
-
+			<p>Questions, comments, concerns? Drop us a line at <a href="mailto:hyperstudio-support@mit.edu">hyperstudio-support@mit.edu</a>.</p>
         </div> <!-- /content -->
-
-        <footer class="footer">
-            <div class="footer-header cf">
-                <h2 class="h3 no-link">Near you</h2>
-            </div>
-            <div class="footer-slider-messages error-messages">
-
-    <p id="footer-slider-msg-favoritesignup" class="footer-slider-msg">You have no favorites yet. <a href="#" class="signup-trigger">Sign up</a> or <a href="sign-in.html" class="signin-link">sign in</a> to save and access your favorite events and exhibitions!</p>
-
-    <p id="footer-slider-msg-nofavorites" class="footer-slider-msg">You have no favorites yet. Tap the star icon to save an event or exhibition!</p>
-
-    <p id="footer-slider-msg-noevents" class="footer-slider-msg">No exhibitions found.</p>
-
-    <p id="footer-slider-msg-generalerror" class="footer-slider-msg">An error occurred, please reload the page and try again.</p>
-
-    <p id="footer-slider-msg-noeventsnearby" class="footer-slider-msg">There are no exhibitions within <span id="location-radius">X</span> miles of your current location.</p>
-
-    <p id="footer-slider-msg-nogeolocation" class="footer-slider-msg">Artbot couldn't detect your location.</p>
-
-</div>
-
-<div id="near-you-slider" class="footer-slider">
-
-    <ul id="footer-slider" class="bxslider cf">
-
-    </ul>
-
-    <span id="footer-slider-previous" class="footer-slider-previous"></span>
-    <span id="footer-slider-next" class="footer-slider-next"></span>
-   
-</div> <!-- /favorite-slider -->
-
-<script type="text/template" id="template-favoriteslider">
-    <% _.each(itemArray, function(favoriteObj, key){ %>
-    <% if (favoriteObj.id != -1) { %>
-    <li><a href="event.html?eventid=<%= favoriteObj.event.id %>"><img src="<%= favoriteObj.event.image %>" alt="<%= favoriteObj.event.name %>" onerror="if (this.src != '/ui/img/rect-noimage.jpg') this.src = '/ui/img/rect-noimage.jpg';" /></a></li>
-    <% } %>
-    <% }); %>
-</script>
-
-<script type="text/template" id="template-eventslider">
-    <% _.each(itemArray, function(eventObj, key){ %>
-    <% if (eventObj.id != -1) { %>
-    <li><a href="event.html?eventid=<%= eventObj.id %>"><img src="<%= eventObj.image %>" alt="<%= eventObj.name %>" onerror="if (this.src != '/ui/img/rect-noimage.jpg') this.src = '/ui/img/rect-noimage.jpg';" /></a></li>
-    <% } %>
-    <% }); %>
-</script>
-        </footer> <!-- /footer -->
 
         <div id="menu-panel" data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" class="menu-panel">
   <ul>
     <li class="menu-user-greeting"><span>Hi, <b class="dynamic-username"></b>!</span></li>
     <li class="menu-home"><a href="/">Discover Artbot</a></li>
     <li class="menu-calendar"><a href="bydate.html">By Date</a></li>
-    <li class="menu-location active"><a href="bylocation.html">By Location</a></li>
+    <li class="menu-location"><a href="bylocation.html">By Location</a></li>
     <li class="menu-favorites"><a href="favorites.html">Favorites</a></li>
     <li class="menu-history"><a href="history.html">History</a></li>
     <li class="menu-settings"><a href="settings.html">Settings</a></li>
     <li class="menu-interests"><a href="interests.html">My Interests</a></li>
-    <li class="menu-about"><a href="about.html">About Us</a></li>
+    <li class="menu-about active"><a href="about.html">About Us</a></li>
     <li class="menu-signin"><a href="sign-in.html" class="signin-link">Sign in</a></li>
     <li class="menu-logout"><a href="#" class="action-logout">Log out</a></li>
   </ul>
