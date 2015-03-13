@@ -338,7 +338,8 @@ Artbot.dataService = {
 // Variables that can be used throughout
 Artbot.var = {
     itemsPerPage : 5,
-    jsonDomain: "http://artbot-api.herokuapp.com",
+    //jsonDomain: "http://artbot-api.herokuapp.com",
+    jsonDomain: "http://0.0.0.0:3000",
     eventDetailID: 1, // acts as a fallback in case for some reason the Events data doesn't load
     venueDetailID: 1, // acts as a fallback in case for some reason the Venue data doesn't load
     relatedInterests: {} // empty object placeholder, used by Event detail to pass info to footer slider
